@@ -1,12 +1,7 @@
-const args = process.argv.slice(2);
+process.stdin.on('data', (data) => {
 
-console.log(`Total number of arguments is ${args.length}`);
-console.log(`Arguments: ${JSON.stringify(args)}`);
+    const input = data.toString().trim();
+    console.log(`Received input: ${input}`);
+});
 
-const echoInput = (chunk) => {
-    const chunkStringified = chunk.toString();
-    if (chunkStringified.includes('CLOSE')) process.exit(0);
-    process.stdout.write(`Received from master process: ${chunk.toString()}\n`)
-};
-
-process.stdin.on('data', echoInput);
+console.log("Hello from script.js!");
